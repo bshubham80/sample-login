@@ -1,19 +1,12 @@
 package com.example.tddlogin
 
+import android.widget.Button
+import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
-
-import org.junit.Assert.*
 import org.junit.runner.RunWith
-import org.robolectric.RobolectricTestRunner
-import org.robolectric.RuntimeEnvironment
-
-import android.content.Intent
-
-import android.R
-
 import org.robolectric.Robolectric
-
-
+import org.robolectric.RobolectricTestRunner
 
 
 /**
@@ -23,9 +16,27 @@ import org.robolectric.Robolectric
  */
 @RunWith(RobolectricTestRunner::class)
 class ExampleUnitTest {
+    private var activity: MainActivity? = null
+    private var loginButton: Button? = null
+
+    @Before
+    @Throws(Exception::class)
+    fun setUp() {
+        activity = Robolectric.buildActivity(MainActivity::class.java).create().get()
+        loginButton = activity?.login
+    }
 
     @Test
-    fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+    fun setUserName() {
+        activity?.setUsername("")
+
+        assertTrue("Button is disable when username is empty", !loginButton?.isEnabled!!)
+    }
+
+    @Test
+    fun setPassword() {
+        activity?.setPassword("")
+
+        assertTrue("Button is disable when password is empty", !loginButton?.isEnabled!!)
     }
 }

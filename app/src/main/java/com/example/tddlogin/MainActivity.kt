@@ -12,10 +12,12 @@ import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
-    private val _username = MutableStateFlow("")
-    private val _password = MutableStateFlow("")
+    lateinit var login: Button;
 
-    private val formIsValid = combine(_username, _password) { u, password ->
+    private var _username = MutableStateFlow("")
+    private var _password = MutableStateFlow("")
+
+    private var formIsValid = combine(_username, _password) { u, password ->
         return@combine u.isNotEmpty() and password.isNotEmpty()
     }
 
@@ -46,11 +48,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setUsername(username: String) {
+    public fun setUsername(username: String) {
         _username.value = username
     }
 
-    private fun setPassword(pass: String) {
+    public fun setPassword(pass: String) {
         _password.value = pass
     }
 }
