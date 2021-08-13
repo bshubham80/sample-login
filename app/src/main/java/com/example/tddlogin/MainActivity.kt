@@ -48,11 +48,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    public fun setUsername(username: String) {
+    fun setUsername(username: String) {
         _username.value = username
     }
 
-    public fun setPassword(pass: String) {
+    fun setPassword(pass: String) {
         _password.value = pass
     }
 }
